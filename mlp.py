@@ -5,10 +5,7 @@ from random import random
 from random import seed
 from math import exp
 
-seed(3)
-
 # %% Neuron Class to build the network
-
 class Neuron:
     output = 0          # y
     localGradient = 0   # delta
@@ -31,7 +28,6 @@ class Neuron:
         return self.output
 
 # %% Forward Propagation Algorithm
-
 def forward_computation(neuralNet, x):
     temp = x
 
@@ -43,7 +39,6 @@ def forward_computation(neuralNet, x):
     return outputs
 
 # %% Backward Propagation Algorithm
-
 def backward_computation(neuralNet, x, desired, alpha, eta):
     for l in reversed(range(len(neuralNet))):
         layer = neuralNet[l]
@@ -85,9 +80,7 @@ def backward_computation(neuralNet, x, desired, alpha, eta):
                     neuron.prevUpdate[i] = weightUpdate
 
 # %% Generating the training set
-
 nInput = 5
-
 xTrain = []
 yTrain = [0] * (2**nInput)
 
@@ -109,7 +102,6 @@ for i in range(2**nInput):
             xTrain[i][n] = -1
 
 # %% Training for alpha = 0
-
 nHiddenNodes = 8
 
 # etaValues = np.arange(0.05, 0.5, 0.05)   # For Sigmoid activation
@@ -158,10 +150,7 @@ for eta in etaValues:
             break
     it += 1
 
-
-
 # %% Training for alpha = 0.8
-
 results2 = [maxEpoch] * len(etaValues)
 
 alpha = 0.8
@@ -204,7 +193,6 @@ for eta in etaValues:
     it += 1
 
 # %% Plotting Results
-
 plt.figure(figsize=(8,5))
 plt.plot(etaValues, results1, label=r'$\alpha = 0$', marker='o', fillstyle='none')
 plt.plot(etaValues, results2, label=r'$\alpha = 0.8$', marker='s', fillstyle='none')
